@@ -1,0 +1,120 @@
+MongoDB Install
+
+mongodb.com < resources < server < installation < download
+
+Install vs code extantion MongoDB for VS Code
+
+right click launch mongodb shell
+
+start->>>>>>>>
+
+
+cls-->clear screen
+
+show dbs
+
+use admin
+
+use school
+
+db.createCollection("students")
+
+db.dropDatabase()
+
+use school
+
+db.students.insertOne({name:"Spongebob", age:30, gpa:3.2})
+
+db.students.find()
+
+db.students.insertmany([{name:"Spongebob", age:30, gpa:3.2}, {name:"Spongeboba", age:31, gpa:3.3}, {name:"Spongebob2", age:32, gpa:3.4}])
+
+db.students.insertOne({
+    name:"Larry",
+    gpa:2.5,
+    age:32,
+    fullTime: false,
+    registerdate: new Date(),
+    gradutionDate:null,
+    coursess: ["Biology", "Chemistry", "calculas"],
+    address: {street:"123 fake St.", city:"Bikini Botton", zip: 12345}
+})
+
+db.students.find().sort({name:1})
+
+db.students.insertOne({
+    name:"Larry",
+    gpa:2.5,
+    age:32,
+    fullTime: false,
+    registerdate: new Date(),
+    gradutionDate:null,
+    coursess: ["Biology", "Chemistry", "calculas"],
+    address: {street:"123 fake St.", city:"Bikini Botton", zip: 12345}
+    post:
+})
+
+db.students.find().sort({name:1})
+
+db.students.find().sort({gpa:1})
+db.students.find().sort({gpa:-1})
+db.students.find().limit ({1})
+db.students.find().sort({gpa:1}).limit (-1)
+db.students.find().sort({gpa:1}).limit (1)
+db.students.find({gpa:4.0})
+db.students.find({}, {gpa:4.0})
+db.students.find({}, {_id:false, gpa:4.0})
+db.students.find({}, {_id:false, name:true, gpa:4.0})
+db.students.find({query}, {projection})
+db.students.updateOne({name:"Spongebob"}, {$set:{fulltime:true}}) // add field
+db.students.updateOne({_id: objectId("154555")}, {$set:{fulltime:false}})
+db.students.updateOne({_id: objectId("154555")}, {$unset:{fulltime:false}}) // remove field
+
+db.students.updateMany({}, {$set:{fulltime:false}}) // add all field
+
+db.students.updateMany({fullTime:{$exists:false}}, {$set:{fulltime:false}}) // add all field
+
+db.students.deleteOne({name:"larry"}) // delete one
+
+db.students.deleteMany({registerDate:{$exists:false}}) // delete many
+
+db.students.find({name:{$ne:"Spongebob"}})
+db.students.find({age:{$lt:20}}) // less then  value show
+db.students.find({age:{$lte:27}}) // less then  value show with corrent value
+
+db.students.find({age:{$gt:27}}) // greater then  value show
+
+db.students.find({age:{$gte:27}}) // greater then  value show with corrent value
+
+db.students.find({gpa:{$gte:3, $lte: 4}}) // less then and greater then  value show with corrent value
+
+db.students.find({name:{$in:["Spongebob", "patrick", "Sandy"]}}) // comparison operator  if array
+
+db.students.find({name:{$nin:["Spongebob", "patrick", "Sandy"]}}) // comparison operator  else array
+
+db.students.find({name:{$and:[{fullTime:true}, {age:{$lte:22}}]}}) // comparison operator  and array
+
+db.students.find({name:{$not:[{fullTime:true}, {age:{$lte:22}}]}}) // comparison operator  not array
+
+db.students.find({age:{$not:{age:{$gte:30}}}}) // comparison operator  not array
+
+db.students.find({name:{$notr:[{fullTime:true}, {age:{$lte:22}}]}}) // comparison operator  notr array
+
+db.students.find({name:{$or:[{fullTime:true}, {age:{$lte:22}}]}}) // comparison operator  or array
+
+db.students.find({name:"Larry"}).explain("executionStats") // comparison operator  or array
+
+db.students.createIndex({name:1}) // comparison operator  or array
+
+db.students.getIndexs() // comparison operator  or array
+
+db.students.dropIndex("name_1") // comparison operator  or array
+
+db.createCollection("teachers", {capped:true, size:1000000, max:100}, {autoIndexId:false})
+show collections
+
+db.createCollection("courses")
+
+db.courses.drop()
+
+
